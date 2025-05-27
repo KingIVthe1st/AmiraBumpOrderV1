@@ -76,7 +76,12 @@
         
         /* Hide page content initially - but allow scrolling after load */
         body.loading-active {
-            overflow: hidden !important;
+            overflow: hidden;
+        }
+        
+        body.site-loaded {
+            overflow: visible !important;
+            overflow-y: auto !important;
         }
         
         /* Instant loading content */
@@ -596,9 +601,8 @@
     <script>
         // Immediate loading optimization - executed before DOM ready
         (function() {
-            // Ensure no flashing of content
-            document.documentElement.style.overflow = 'hidden';
-            document.documentElement.style.height = '100%';
+            // Don't mess with overflow here - let the loading script handle it
+            console.log('🎨 Pre-loading script executed');
         })();
     </script>
     

@@ -1,71 +1,68 @@
 /**
- * Simple and Reliable Loading Animation
- * Shows loading screen immediately, completes after 2 seconds
+ * Ultra-Simple Loading Animation - Guaranteed Scroll Fix
+ * No complex logic, just show loading briefly then restore scroll
  */
 
-// Complete loading function
-function completeLoading() {
-  console.log('🎨 Completing loading animation');
+console.log('🎨 Loading animation starting...');
+
+// Force restore scroll function
+function forceRestoreScroll() {
+  console.log('🔧 Force restoring scroll...');
   
+  // Remove loading overlay
   const overlay = document.getElementById('instant-loading-overlay');
   if (overlay) {
-    // Fade out
-    overlay.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
-    overlay.style.opacity = '0';
-    overlay.style.transform = 'scale(1.02)';
-    
-    // Remove after animation
-    setTimeout(() => {
-      overlay.remove();
-      // Force restore scrolling
-      document.body.style.overflow = 'visible';
-      document.body.style.overflowY = 'auto';
-      document.documentElement.style.overflow = 'visible';
-      document.documentElement.style.overflowY = 'auto';
-      
-      // Remove any loading classes that might affect scroll
-      document.body.classList.remove('loading-active');
-      document.body.classList.add('site-loaded');
-      
-      console.log('✅ Loading complete - scrolling restored');
-    }, 600);
+    overlay.style.display = 'none';
+    overlay.remove();
   }
   
-  // Always restore scroll as backup - FORCE IT
-  document.body.style.overflow = 'visible';
-  document.body.style.overflowY = 'auto';
-  document.documentElement.style.overflow = 'visible';  
-  document.documentElement.style.overflowY = 'auto';
+  // AGGRESSIVELY restore scroll
+  document.body.style.overflow = '';
+  document.body.style.overflowY = '';
+  document.body.style.height = '';
+  document.documentElement.style.overflow = '';
+  document.documentElement.style.overflowY = '';
+  document.documentElement.style.height = '';
+  
+  // Remove any problematic classes
+  document.body.classList.remove('loading-active');
+  document.body.classList.add('site-loaded');
+  
+  // Force reflow
+  document.body.offsetHeight;
+  
+  console.log('✅ Scroll forcefully restored');
 }
 
-// Wait for DOM, then complete loading after 2 seconds
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', function() {
-    console.log('🎨 DOM loaded, starting 2-second loading timer');
-    setTimeout(completeLoading, 2000);
-  });
-} else {
-  // DOM already loaded
-  console.log('🎨 DOM already ready, starting 2-second loading timer');
-  setTimeout(completeLoading, 2000);
-}
-
-// Safety fallbacks
+// Simple timer - complete loading after 1.5 seconds
 setTimeout(() => {
-  console.log('🔧 Safety fallback at 4 seconds');
-  completeLoading();
-}, 4000);
+  console.log('🎨 Completing loading after 1.5 seconds');
+  forceRestoreScroll();
+}, 1500);
 
+// Safety fallback at 3 seconds
 setTimeout(() => {
-  console.log('🚨 Emergency fallback at 6 seconds');
+  console.log('🔧 Safety fallback at 3 seconds');
+  forceRestoreScroll();
+}, 3000);
+
+// Emergency fallback at 5 seconds
+setTimeout(() => {
+  console.log('🚨 Emergency fallback at 5 seconds');
+  forceRestoreScroll();
+}, 5000);
+
+// Ultimate fallback - always restore scroll
+setTimeout(() => {
+  console.log('💥 Ultimate fallback - forcing scroll no matter what');
   const overlay = document.getElementById('instant-loading-overlay');
   if (overlay) overlay.remove();
   
-  // FORCE restore scrolling
+  // Nuclear option - remove ALL overflow restrictions
+  document.body.removeAttribute('style');
+  document.documentElement.removeAttribute('style');
   document.body.style.overflow = 'visible';
   document.body.style.overflowY = 'auto';
-  document.documentElement.style.overflow = 'visible';
-  document.documentElement.style.overflowY = 'auto';
   
-  console.log('🔧 Emergency scroll restoration complete');
-}, 6000);
+  console.log('🎯 Nuclear scroll restoration complete');
+}, 7000);
