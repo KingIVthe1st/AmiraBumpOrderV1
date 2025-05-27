@@ -1,0 +1,21 @@
+services:
+  amirabump-preview:
+    build: .
+    container_name: amirabump-local-preview
+    ports:
+      - "3030:80"
+    volumes:
+      # Mount for live development (optional)
+      - .:/usr/share/nginx/html:ro
+    restart: unless-stopped
+    environment:
+      - NGINX_HOST=localhost
+      - NGINX_PORT=80
+    labels:
+      - "traefik.enable=false"
+    networks:
+      - amirabump-network
+
+networks:
+  amirabump-network:
+    driver: bridge

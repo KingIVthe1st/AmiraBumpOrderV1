@@ -1,0 +1,23 @@
+{
+  "name": "amirabump-preview",
+  "version": "1.0.0",
+  "description": "Local development server for AmiraBumpOrderV1",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js --watch",
+    "docker-preview": "docker-compose up --build",
+    "docker-stop": "docker-compose down"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "compression": "^1.7.4"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "keywords": ["preview", "development", "static-server"],
+  "author": "KingIVthe1st",
+  "license": "MIT"
+}
