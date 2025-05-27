@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Z-Index Test</title>
+    <style>
+        body { margin: 0; padding: 20px; font-family: Arial, sans-serif; }
+        .container { 
+            position: relative; 
+            width: 600px; 
+            height: 400px; 
+            background: #f0f0f0; 
+            margin: 20px auto;
+            border: 2px solid #333;
+        }
+        .video-area { 
+            position: absolute; 
+            width: 100%; 
+            height: 100%; 
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4); 
+            z-index: 1;
+        }
+        .button { 
+            position: absolute; 
+            bottom: -20px; 
+            right: 40px; 
+            background: white; 
+            padding: 10px 20px; 
+            border-radius: 25px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 9999;
+        }
+        .button-text { 
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Z-Index Layer Test</h1>
+    <p>The "Free Tutorial" button should appear ON TOP of the colored area (simulating video):</p>
+    
+    <div class="container">
+        <div class="video-area">
+            <p style="color: white; padding: 20px; margin: 0;">This simulates the video area</p>
+        </div>
+        <div class="button">
+            <span class="button-text">Free Tutorial</span>
+        </div>
+    </div>
+    
+    <p>✅ If you can see the "Free Tutorial" button clearly on top, the z-index fix worked!</p>
+    <p>❌ If the button is hidden behind the colored area, we need to adjust the CSS.</p>
+</body>
+</html>

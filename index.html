@@ -15,8 +15,29 @@
         html { scroll-behavior: smooth; }
         #masterabstract { scroll-margin-top: 2rem; }
         
-        /* Ensure video container doesn't block anchoring */
+        /* Ensure video container doesn't block anchoring and buttons stay on top */
         #vimeo-player { position: relative; z-index: 1; }
+        #vimeo-player iframe { position: relative; z-index: 1; }
+        
+        /* Ensure floating elements stay above video */
+        .floating-badge { 
+            z-index: 9999 !important; 
+            position: relative !important;
+            display: inline-flex !important;
+            width: auto !important;
+            white-space: nowrap;
+        }
+        
+        /* Force button to be above everything */
+        .floating-badge::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+        }
     </style>
     <script src="anchor-fix.js"></script>
 </head>
@@ -64,19 +85,19 @@
         <div class="w-full relative z-10 max-w-4xl mx-auto">
           <div class="relative w-full" style="aspect-ratio: 16/9;">
             <!-- Artistic Frame -->
-            <div class="absolute -inset-4 md:-inset-6 lg:-inset-8 xl:-inset-10 bg-gradient-to-r from-pink-400 via-yellow-300 to-blue-400 rounded-3xl opacity-70 blur-lg transition-all duration-500 group-hover:opacity-90"></div>
+            <div class="absolute -inset-4 md:-inset-6 lg:-inset-8 xl:-inset-10 bg-gradient-to-r from-pink-400 via-yellow-300 to-blue-400 rounded-3xl opacity-70 blur-lg transition-all duration-500 group-hover:opacity-90 z-0"></div>
             
             <!-- Video Container -->
-            <div class="relative w-full h-full rounded-2xl overflow-hidden group">
+            <div class="relative w-full h-full rounded-2xl overflow-hidden group z-10">
               <div id="vimeo-player" class="w-full h-full"></div>
             </div>
             
             <!-- Decorative Elements -->
-            <div class="absolute -top-6 -right-6 w-24 h-24 bg-pink-400/30 rounded-full blur-xl"></div>
+            <div class="absolute -top-6 -right-6 w-24 h-24 bg-pink-400/30 rounded-full blur-xl z-5"></div>
             
             <!-- Floating Badge -->
-            <div class="absolute -bottom-8 right-10 bg-white rounded-full shadow-xl px-6 py-3 flex items-center">
-              <span class="bg-gradient-to-r from-pink-500 to-blue-500 bg-clip-text text-transparent font-bold">Free Tutorial</span>
+            <div class="floating-badge absolute -bottom-8 right-10 bg-white rounded-full shadow-xl px-4 py-2 flex items-center z-50">
+              <span class="bg-gradient-to-r from-pink-500 to-blue-500 bg-clip-text text-transparent font-bold text-sm">Free Tutorial</span>
             </div>
           </div>
         </div>
