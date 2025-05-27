@@ -10,14 +10,19 @@
     "docker-stop": "docker-compose down"
   },
   "dependencies": {
-    "express": "^4.18.2",
+    "compression": "^1.8.0",
     "cors": "^2.8.5",
-    "compression": "^1.7.4"
+    "express": "^4.21.2",
+    "morgan": "^1.10.0"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"
   },
-  "keywords": ["preview", "development", "static-server"],
+  "keywords": [
+    "preview",
+    "development",
+    "static-server"
+  ],
   "author": "KingIVthe1st",
   "license": "MIT"
 }

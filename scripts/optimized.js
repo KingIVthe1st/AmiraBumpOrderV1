@@ -97,8 +97,24 @@
 
     // Logo fade effect on scroll
     function initLogoFadeEffect() {
-        const logo = document.querySelector('.site-logo img');
-        if (!logo) return;
+        console.log('Initializing logo fade effect...');
+        
+        // Try multiple selectors to find the logo
+        let logo = document.querySelector('.site-logo img');
+        
+        if (!logo) {
+            console.log('Logo not found with .site-logo img, trying alternative selectors...');
+            logo = document.querySelector('header img') || 
+                  document.querySelector('picture img[alt*="Amira"]') ||
+                  document.querySelector('picture img');
+        }
+        
+        if (!logo) {
+            console.log('Logo element not found. Fade effect cannot be applied.');
+            return;
+        }
+        
+        console.log('Logo found:', logo);
         
         // Initial state
         logo.style.transition = 'opacity 0.4s ease-out, transform 0.4s ease-out';
