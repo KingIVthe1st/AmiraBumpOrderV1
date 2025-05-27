@@ -35,16 +35,17 @@
     <link rel="icon" type="image/png" href="/images/logo-amira-rahim.png">
     
     <!-- Performance Optimization - Preload Critical Resources -->
-    <link rel="preload" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" as="style">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" as="style">
     <link rel="preload" href="images/AR_FineArt_Primary_Logo_2_3.webp" as="image" type="image/webp">
     <link rel="preconnect" href="https://player.vimeo.com">
     <link rel="dns-prefetch" href="https://vimeo.com">
     
     <!-- Stylesheets -->
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles/testimonials.css">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"></noscript>
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"></noscript>
+    <link rel="preload" href="styles/testimonials.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="styles/testimonials.css"></noscript>
     <style>
         /* CSS-based anchor fix for immediate scroll on page load */
         html { scroll-behavior: smooth; }
@@ -469,7 +470,7 @@
             50% { opacity: 1; }
         }
     </style>
-    <script src="anchor-fix.js"></script>
+    <!-- Scripts are loaded at the end of the body for better performance -->
 </head>
 <body class="font-jakarta bg-gradient-to-br from-pink-100 via-yellow-100 to-blue-100 text-gray-800 min-h-screen flex flex-col">
   <!-- ULTRA-PREMIUM ARTISTIC HEADER - Million Dollar Agency Design -->
@@ -508,27 +509,41 @@
     <div class="premium-brush-stroke"></div>
     
     <!-- Logo Bar -->
-    <div class="relative z-20 py-4 px-4 sm:px-6 lg:px-8 bg-white/90 backdrop-blur-md border-b border-white/30">
+    <div class="relative z-20 py-2 sm:py-3 px-4 sm:px-6 lg:px-8 bg-white/90 backdrop-blur-md border-b border-white/30">
       <div class="container mx-auto flex justify-center md:justify-start">
         <picture>
-          <source srcset="images/AR_FineArt_Primary Logo 2 (3).webp" type="image/webp">
-          <img src="images/AR_FineArt_Primary Logo 2 (3).png" alt="Amira Rahim Fine Art" class="h-16 w-auto">
+          <!-- WebP format with srcset for future responsive images -->
+          <source 
+            srcset="images/AR_FineArt_Primary_Logo_2_3.webp 1x"
+            type="image/webp"
+          >
+          <!-- Fallback PNG -->
+          <img 
+            src="images/AR_FineArt_Primary_Logo_2_3.webp" 
+            srcset="images/AR_FineArt_Primary_Logo_2_3.webp 1x"
+            alt="Amira Rahim Fine Art" 
+            class="h-14 sm:h-16 w-auto"
+            width="200" 
+            height="56"
+            loading="eager"
+            decoding="async"
+          >
         </picture>
       </div>
     </div>
 
     <!-- Main Hero Content -->
-    <div class="relative pt-8 pb-20 md:py-16 px-4 sm:px-6 lg:px-8 min-h-screen flex flex-col z-10">
+    <div class="relative pt-0 pb-2 md:pb-16 px-4 sm:px-6 lg:px-8 md:min-h-screen flex flex-col z-10">
 
       <!-- Top Section: Congratulations + Video (Full Width, Above Fold) -->
-      <div class="flex-1 flex flex-col justify-center max-w-6xl mx-auto w-full relative z-10">
+      <div class="flex-1 flex flex-col justify-start md:justify-center max-w-6xl mx-auto w-full relative z-10 mt-4 md:mt-0">
         <!-- Congratulations Text -->
-        <div class="text-center mb-8 relative z-30">
+        <div class="text-center mb-6 relative z-30">
           <h3 class="text-2xl md:text-4xl font-black px-8 py-6 rounded-2xl shadow-2xl mx-4" style="font-weight: 900; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(20px); border: 2px solid rgba(255, 255, 255, 0.3);">
             <span style="
               background: linear-gradient(90deg, #ec4899, #eab308, #2563eb); 
               background-clip: text; 
-              -webkit-background-clip: text; 
+              -webkit-background-clip: text;
               color: #ec4899;
               -webkit-text-fill-color: transparent;
               text-shadow: 0 2px 4px rgba(236, 72, 153, 0.3);
@@ -549,7 +564,7 @@
             </div>
             
             <!-- Masterpiece Floating Badge -->
-            <div class="floating-badge masterpiece-badge absolute -bottom-8 right-10 rounded-full px-4 py-2 flex items-center z-50">
+            <div class="floating-badge masterpiece-badge absolute -bottom-4 sm:-bottom-8 right-4 sm:right-10 rounded-full px-4 py-2 flex items-center z-50">
               <span class="bg-gradient-to-r from-pink-500 to-blue-500 bg-clip-text text-transparent font-bold text-sm">Free Tutorial</span>
             </div>
           </div>
@@ -660,20 +675,77 @@
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <div class="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-5 transform hover:scale-105 transition-all duration-300 hover:shadow-2xl">
           <picture>
-            <source srcset="images/testimonials/testimonial1.webp" type="image/webp">
-            <img src="images/testimonials/testimonial1.jpeg" alt="Student Testimonial" class="w-full rounded-xl shadow-md hover:shadow-xl transition-all duration-300" loading="lazy">
+            <!-- WebP format with responsive sizes -->
+            <source 
+              srcset="
+                images/testimonials/testimonial1.webp 1x,
+                images/testimonials/testimonial1.webp 2x"
+              type="image/webp"
+            >
+            <!-- Fallback JPEG -->
+            <img 
+              src="images/testimonials/testimonial1.jpeg"
+              srcset="
+                images/testimonials/testimonial1.jpeg 1x,
+                images/testimonials/testimonial1.jpeg 2x"
+              alt="Student artwork from Amira's course" 
+              class="w-full rounded-xl shadow-md hover:shadow-xl transition-all duration-300"
+              width="400"
+              height="300"
+              loading="lazy"
+              decoding="async"
+              sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+            >
           </picture>
         </div>
         <div class="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-5 transform hover:scale-105 transition-all duration-300 hover:shadow-2xl">
           <picture>
-            <source srcset="images/testimonials/testimonial2.webp" type="image/webp">
-            <img src="images/testimonials/testimonial2.jpeg" alt="Student Testimonial" class="w-full rounded-xl shadow-md hover:shadow-xl transition-all duration-300" loading="lazy">
+            <!-- WebP format with responsive sizes -->
+            <source 
+              srcset="
+                images/testimonials/testimonial2.webp 1x,
+                images/testimonials/testimonial2.webp 2x"
+              type="image/webp"
+            >
+            <!-- Fallback JPEG -->
+            <img 
+              src="images/testimonials/testimonial2.jpeg"
+              srcset="
+                images/testimonials/testimonial2.jpeg 1x,
+                images/testimonials/testimonial2.jpeg 2x"
+              alt="Student artwork from Amira's course" 
+              class="w-full rounded-xl shadow-md hover:shadow-xl transition-all duration-300"
+              width="400"
+              height="300"
+              loading="lazy"
+              decoding="async"
+              sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+            >
           </picture>
         </div>
         <div class="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-5 transform hover:scale-105 transition-all duration-300 hover:shadow-2xl">
           <picture>
-            <source srcset="images/testimonials/testimonial3.webp" type="image/webp">
-            <img src="images/testimonials/testimonial3.jpeg" alt="Student Testimonial" class="w-full rounded-xl shadow-md hover:shadow-xl transition-all duration-300" loading="lazy">
+            <!-- WebP format with responsive sizes -->
+            <source 
+              srcset="
+                images/testimonials/testimonial3.webp 1x,
+                images/testimonials/testimonial3.webp 2x"
+              type="image/webp"
+            >
+            <!-- Fallback JPEG -->
+            <img 
+              src="images/testimonials/testimonial3.jpeg"
+              srcset="
+                images/testimonials/testimonial3.jpeg 1x,
+                images/testimonials/testimonial3.jpeg 2x"
+              alt="Student artwork from Amira's course" 
+              class="w-full rounded-xl shadow-md hover:shadow-xl transition-all duration-300"
+              width="400"
+              height="300"
+              loading="lazy"
+              decoding="async"
+              sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+            >
           </picture>
         </div>
       </div>
@@ -681,20 +753,77 @@
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
         <div class="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-5 transform hover:scale-105 transition-all duration-300 hover:shadow-2xl">
           <picture>
-            <source srcset="images/testimonials/testimonial4.webp" type="image/webp">
-            <img src="images/testimonials/testimonial4.jpeg" alt="Student Testimonial" class="w-full rounded-xl shadow-md hover:shadow-xl transition-all duration-300" loading="lazy">
+            <!-- WebP format with responsive sizes -->
+            <source 
+              srcset="
+                images/testimonials/testimonial4.webp 1x,
+                images/testimonials/testimonial4.webp 2x"
+              type="image/webp"
+            >
+            <!-- Fallback JPEG -->
+            <img 
+              src="images/testimonials/testimonial4.jpeg"
+              srcset="
+                images/testimonials/testimonial4.jpeg 1x,
+                images/testimonials/testimonial4.jpeg 2x"
+              alt="Student artwork from Amira's course" 
+              class="w-full rounded-xl shadow-md hover:shadow-xl transition-all duration-300"
+              width="400"
+              height="300"
+              loading="lazy"
+              decoding="async"
+              sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+            >
           </picture>
         </div>
         <div class="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-5 transform hover:scale-105 transition-all duration-300 hover:shadow-2xl">
           <picture>
-            <source srcset="images/testimonials/testimonial5.webp" type="image/webp">
-            <img src="images/testimonials/testimonial5.jpeg" alt="Student Testimonial" class="w-full rounded-xl shadow-md hover:shadow-xl transition-all duration-300" loading="lazy">
+            <!-- WebP format with responsive sizes -->
+            <source 
+              srcset="
+                images/testimonials/testimonial5.webp 1x,
+                images/testimonials/testimonial5.webp 2x"
+              type="image/webp"
+            >
+            <!-- Fallback JPEG -->
+            <img 
+              src="images/testimonials/testimonial5.jpeg"
+              srcset="
+                images/testimonials/testimonial5.jpeg 1x,
+                images/testimonials/testimonial5.jpeg 2x"
+              alt="Student artwork from Amira's course" 
+              class="w-full rounded-xl shadow-md hover:shadow-xl transition-all duration-300"
+              width="400"
+              height="300"
+              loading="lazy"
+              decoding="async"
+              sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+            >
           </picture>
         </div>
         <div class="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-5 transform hover:scale-105 transition-all duration-300 hover:shadow-2xl">
           <picture>
-            <source srcset="images/testimonials/testimonial6.webp" type="image/webp">
-            <img src="images/testimonials/testimonial6.jpeg" alt="Student Testimonial" class="w-full rounded-xl shadow-md hover:shadow-xl transition-all duration-300" loading="lazy">
+            <!-- WebP format with responsive sizes -->
+            <source 
+              srcset="
+                images/testimonials/testimonial6.webp 1x,
+                images/testimonials/testimonial6.webp 2x"
+              type="image/webp"
+            >
+            <!-- Fallback JPEG -->
+            <img 
+              src="images/testimonials/testimonial6.jpeg"
+              srcset="
+                images/testimonials/testimonial6.jpeg 1x,
+                images/testimonials/testimonial6.jpeg 2x"
+              alt="Student artwork from Amira's course" 
+              class="w-full rounded-xl shadow-md hover:shadow-xl transition-all duration-300"
+              width="400"
+              height="300"
+              loading="lazy"
+              decoding="async"
+              sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+            >
           </picture>
         </div>
       </div>
@@ -747,8 +876,26 @@
       </div>
       <div class="flex flex-col items-center justify-center">
         <picture>
-          <source srcset="images/colorbridges.webp" type="image/webp">
-          <img src="images/colorbridges.png" alt="Color Bridges Preview" class="rounded-xl shadow-xl mb-6 w-full max-w-xs" loading="lazy">
+          <!-- WebP format with responsive sizes -->
+          <source 
+            srcset="
+              images/colorbridges.webp 1x,
+              images/colorbridges.webp 2x"
+            type="image/webp"
+          >
+          <!-- Fallback PNG -->
+          <img 
+            src="images/colorbridges.png"
+            srcset="
+              images/colorbridges.png 1x,
+              images/colorbridges.png 2x"
+            alt="Color Bridges Preview - Abstract painting tutorial by Amira Rahim" 
+            class="rounded-xl shadow-xl mb-6 w-full max-w-xs mx-auto"
+            width="400"
+            height="300"
+            loading="lazy"
+            decoding="async"
+          >
         </picture>
         <a href="https://colors.betterthanartschool.com/checkout" class="block w-full bg-gradient-to-r from-pink-500 to-yellow-400 text-white text-xl font-bold py-4 rounded-full shadow-xl hover:scale-105 hover:from-pink-600 hover:to-yellow-500 transition text-center">Enroll Now for $27</a>
       </div>
@@ -784,6 +931,8 @@
     iframe.className = 'w-full h-full';
     document.getElementById('vimeo-player').appendChild(iframe);
   </script>
-  <script src="scripts/main.js"></script>
+  <!-- Scripts -->
+  <script src="scripts/optimized.js" defer></script>
+  <script src="scripts/main.js" defer></script>
 </body>
 </html>

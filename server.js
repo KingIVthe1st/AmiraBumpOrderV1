@@ -2,74 +2,41 @@ const express = require('express');
 const path = require('path');
 const cors = require('cors');
 const compression = require('compression');
-const fs = require('fs');
+const morgan = require('morgan'); // For logging HTTP requests
 
 const app = express();
 const PORT = process.env.PORT || 3333;
 
-// Enhanced Docker-like development features
-const isDevelopment = process.env.NODE_ENV !== 'production';
+// Enable CORS for all routes
+app.use(cors());
 
-// Middleware stack (Docker-like)
-app.use(compression({
-  level: 6,
-  threshold: 1024,
-  filter: (req, res) => {
-    if (req.headers['x-no-compression']) {
-      return false;
-    }
-    return compression.filter(req, res);
-  }
-}));
+// Compress all responses
+app.use(compression());
 
-app.use(cors({
-  origin: isDevelopment ? true : false,
-  credentials: true
-}));
+// Middleware for logging HTTP requests
+app.use(morgan('dev'));
 
-// Security headers (nginx-like)
+// Security Headers
 app.use((req, res, next) => {
-  res.setHeader('X-Frame-Options', 'SAMEORIGIN');
   res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader('X-Frame-Options', 'SAMEORIGIN');
   res.setHeader('X-XSS-Protection', '1; mode=block');
-  res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
-  
-  // Development headers
-  if (isDevelopment) {
-    res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
-    res.setHeader('Pragma', 'no-cache');
-    res.setHeader('Expires', '0');
-  }
-  
+  // Set Cache-Control for HTML files to no-cache
+  if (req.path.endsWith('.html')) {
+    res.setHeader('Cache-Control', 'no-cache');
+  } 
   next();
 });
 
-// Logging middleware (Docker-like logs)
-app.use((req, res, next) => {
-  const timestamp = new Date().toISOString();
-  const method = req.method;
-  const url = req.url;
-  const userAgent = req.get('User-Agent') || 'Unknown';
-  
-  console.log(`[${timestamp}] ${method} ${url} - ${userAgent}`);
-  next();
-});
-
-// Static file serving with Docker-like caching
-app.use(express.static('.', {
-  maxAge: isDevelopment ? 0 : '1y',
-  etag: true,
-  lastModified: true,
-  immutable: !isDevelopment,
-  setHeaders: (res, filePath) => {
-    const ext = path.extname(filePath).toLowerCase();
-    
-    if (ext === '.html') {
-      res.setHeader('Cache-Control', 'no-cache');
-    } else if (['.js', '.css', '.png', '.jpg', '.jpeg', '.gif', '.ico', '.svg', '.webp'].includes(ext)) {
-      res.setHeader('Cache-Control', isDevelopment ? 'no-cache' : 'public, max-age=31536000, immutable');
-    } else if (['.woff', '.woff2', '.ttf', '.eot'].includes(ext)) {
-      res.setHeader('Cache-Control', 'public, max-age=31536000');
+// Serve static files from the project directory
+app.use(express.static(__dirname, {
+  etag: true, // Enable ETag generation
+  lastModified: true, // Enable Last-Modified header
+  setHeaders(res, filePath) {
+    // For HTML files, Cache-Control is already set to no-cache by previous middleware
+    // For other static assets, set a long cache duration
+    if (!filePath.endsWith('.html')) {
+      res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
     }
   }
 }));
@@ -94,84 +61,44 @@ app.get('*', (req, res) => {
 app.use((err, req, res, next) => {
   console.error(`[ERROR] ${new Date().toISOString()}`, err);
   res.status(500).json({
-    error: isDevelopment ? err.message : 'Internal Server Error',
+    error: 'Internal Server Error',
     timestamp: new Date().toISOString()
   });
 });
 
-// Start server with Docker-like startup message
-const server = app.listen(PORT, () => {
-  const divider = '━'.repeat(70);
-  console.log(`
-${divider}
-🎨 AmiraBumpOrderV1 Enhanced Preview Server
-${divider}
-
-🌐 URL:           http://localhost:${PORT}
-🔧 Mode:          ${isDevelopment ? 'Development' : 'Production'}
-📁 Root:          ${__dirname}
-🕒 Started:       ${new Date().toLocaleString()}
-🔋 Node:          ${process.version}
-💾 Memory:        ${Math.round(process.memoryUsage().heapUsed / 1024 / 1024)}MB
-
-🚀 Features Active:
-   ✅ Gzip compression (level 6)
-   ✅ CORS enabled
-   ✅ Security headers
-   ✅ Smart caching
-   ✅ Health monitoring (/health)
-   ✅ Request logging
-   ${isDevelopment ? '✅ Hot reload ready' : '✅ Production optimized'}
-
-⚡ Ready to serve requests!
-${divider}
-  `);
+// Start server
+const server = app.listen(PORT, '0.0.0.0', () => {
+  const { address, port } = server.address();
+  console.log(`\n🎨 AmiraBumpOrderV1 Server`);
+  console.log(`🌐 URL: http://${address === '::' ? 'localhost' : address}:${port}`);
+  console.log(`📁 Root: ${__dirname}`);
+  console.log(`🕒 Started: ${new Date().toLocaleString()}\n`);
 });
 
-// File watcher for development (Docker-like auto-reload)
-if (isDevelopment) {
-  const watchFiles = ['index.html', 'styles/', 'scripts/', 'images/'];
-  
-  watchFiles.forEach(file => {
-    if (fs.existsSync(file)) {
-      fs.watch(file, { recursive: true }, (eventType, filename) => {
-        console.log(`[WATCHER] ${new Date().toISOString()} - File changed: ${filename} (${eventType})`);
-      });
-    }
-  });
-  
-  console.log('📁 File watcher active for hot reload');
-}
-
-// Graceful shutdown (Docker-like)
+// Graceful shutdown
 const shutdown = (signal) => {
-  console.log(`\\n🛑 Received ${signal}. Shutting down gracefully...`);
-  
+  console.log(`\n🛑 Received ${signal}. Shutting down...`);
   server.close(() => {
-    console.log('📊 Server statistics:');
-    console.log(`   Uptime: ${Math.round(process.uptime())}s`);
-    console.log(`   Memory: ${Math.round(process.memoryUsage().heapUsed / 1024 / 1024)}MB`);
-    console.log('✅ Server closed successfully');
+    console.log('Server closed. Goodbye! 👋');
     process.exit(0);
   });
   
-  // Force close after 10 seconds
+  // Force shutdown after 5 seconds
   setTimeout(() => {
-    console.log('⚠️  Force closing server...');
+    console.error('Forcing shutdown after timeout');
     process.exit(1);
-  }, 10000);
+  }, 5000);
 };
 
 process.on('SIGTERM', () => shutdown('SIGTERM'));
 process.on('SIGINT', () => shutdown('SIGINT'));
 
-// Unhandled promise rejection handler
+// Error handlers
 process.on('unhandledRejection', (reason, promise) => {
-  console.error('🚨 Unhandled Rejection at:', promise, 'reason:', reason);
+  console.error('Unhandled Rejection at:', promise, 'reason:', reason);
 });
 
-// Uncaught exception handler
 process.on('uncaughtException', (error) => {
-  console.error('🚨 Uncaught Exception:', error);
+  console.error('Uncaught Exception:', error);
   process.exit(1);
 });
