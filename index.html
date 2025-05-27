@@ -48,6 +48,122 @@
     <noscript><link rel="stylesheet" href="styles/testimonials.css"></noscript>
     <link rel="preload" href="styles/loading-animation.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="styles/loading-animation.css"></noscript>
+    
+    <!-- Immediate Loading Screen Styles - Inline for instant display -->
+    <style>
+        /* Immediate loading overlay - shows instantly */
+        #instant-loading-overlay {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100vw !important;
+            height: 100vh !important;
+            background: linear-gradient(135deg, 
+                rgba(248, 250, 252, 0.98) 0%,
+                rgba(241, 245, 249, 0.96) 25%,
+                rgba(236, 254, 255, 0.94) 50%,
+                rgba(253, 242, 248, 0.96) 75%,
+                rgba(240, 249, 255, 0.98) 100%
+            ) !important;
+            backdrop-filter: blur(20px) saturate(180%) !important;
+            z-index: 99999 !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            opacity: 1 !important;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif !important;
+        }
+        
+        /* Hide page content initially */
+        body {
+            overflow: hidden !important;
+        }
+        
+        /* Instant loading content */
+        .instant-loading-content {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(30px) saturate(180%);
+            border-radius: 2rem;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+        }
+        
+        .instant-logo {
+            width: 200px;
+            height: auto;
+            margin-bottom: 2rem;
+            filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1));
+        }
+        
+        .instant-brand {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin: 0 0 0.5rem 0;
+            background: linear-gradient(90deg, #ec4899, #eab308, #2563eb, #7c3aed, #059669);
+            background-size: 200% 100%;
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            animation: instantGradientFlow 3s linear infinite;
+        }
+        
+        .instant-subtitle {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #64748b;
+            margin: 0 0 2rem 0;
+        }
+        
+        .instant-message {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #64748b;
+            margin-top: 1rem;
+        }
+        
+        .instant-progress {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 1rem;
+        }
+        
+        .instant-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #ec4899 0%, #eab308 25%, #2563eb 50%, #7c3aed 75%, #059669 100%);
+            border-radius: 4px;
+            animation: instantProgress 2s ease-out infinite;
+        }
+        
+        @keyframes instantGradientFlow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+        
+        @keyframes instantProgress {
+            0% { width: 20%; }
+            50% { width: 80%; }
+            100% { width: 20%; }
+        }
+        
+        @media (max-width: 768px) {
+            .instant-loading-content { 
+                max-width: 90%; 
+                padding: 2rem 1.5rem; 
+            }
+            .instant-brand { 
+                font-size: 2rem; 
+            }
+            .instant-logo { 
+                width: 150px; 
+            }
+        }
+    </style>
     <style>
         /* CSS-based anchor fix for immediate scroll on page load */
         html { scroll-behavior: smooth; }
@@ -472,9 +588,35 @@
             50% { opacity: 1; }
         }
     </style>
+    
+    <!-- Critical Loading Script - Load immediately for instant display -->
+    <script>
+        // Immediate loading optimization - executed before DOM ready
+        (function() {
+            // Ensure no flashing of content
+            document.documentElement.style.overflow = 'hidden';
+            document.documentElement.style.height = '100%';
+        })();
+    </script>
+    
     <!-- Scripts are loaded at the end of the body for better performance -->
 </head>
 <body class="font-jakarta bg-gradient-to-br from-pink-100 via-yellow-100 to-blue-100 text-gray-800 min-h-screen flex flex-col">
+  
+  <!-- INSTANT LOADING SCREEN - Shows immediately before everything else -->
+  <div id="instant-loading-overlay">
+    <div class="instant-loading-content">
+      <img src="images/AR_FineArt_Primary_Logo_2_3.webp" alt="Amira Rahim Fine Art" class="instant-logo">
+      <h1 class="instant-brand">Amira Rahim</h1>
+      <h3 class="instant-subtitle">Fine Art</h3>
+      <div class="instant-progress">
+        <div class="instant-bar"></div>
+      </div>
+      <div class="instant-message">Loading your artistic journey...</div>
+    </div>
+  </div>
+  
+  <!-- MAIN SITE CONTENT (Hidden initially) -->
   <!-- ULTRA-PREMIUM ARTISTIC HEADER - Million Dollar Agency Design -->
   <header class="artistic-masterpiece-header">
     
@@ -934,8 +1076,11 @@
     iframe.className = 'w-full h-full';
     document.getElementById('vimeo-player').appendChild(iframe);
   </script>
-  <!-- Scripts -->
+  
+  <!-- Critical Loading Animation - Load early for instant enhancement -->
   <script src="scripts/loading-animation.js"></script>
+  
+  <!-- Scripts -->
   <script src="scripts/logo-fade.js"></script>
   <script src="scripts/main.js" defer></script>
 </body>

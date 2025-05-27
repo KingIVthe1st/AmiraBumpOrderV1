@@ -1,17 +1,31 @@
 /**
- * Premium Loading Animation - Color Bridges™ Paint Flow
- * Matches the sophisticated artistic aesthetic of AmiraBumpOrderV1
+ * Premium Loading Animation - Instant Display with Background Loading
+ * Shows immediately while site loads in background
  */
+
+// PHASE 1: Instant loading screen (already visible via inline HTML/CSS)
+// PHASE 2: Enhanced loading with full animations
+// PHASE 3: Smooth transition to site content
+
 document.addEventListener('DOMContentLoaded', function() {
-  console.log('🎨 Initializing Premium Loading Animation');
+  console.log('🎨 Initializing Enhanced Loading Experience');
   
-  // Create the loading overlay
-  const loadingOverlay = document.createElement('div');
-  loadingOverlay.id = 'premium-loading-overlay';
-  loadingOverlay.innerHTML = `
-    <!-- Main Loading Container -->
-    <div class="premium-loading-container">
-      
+  // Get the instant loading overlay
+  const instantOverlay = document.getElementById('instant-loading-overlay');
+  
+  if (!instantOverlay) {
+    console.error('Instant loading overlay not found');
+    return;
+  }
+  
+  // Wait a moment for initial paint, then enhance with full animation
+  setTimeout(() => {
+    enhanceLoadingAnimation();
+  }, 500);
+  
+  function enhanceLoadingAnimation() {
+    // Create enhanced loading content
+    const enhancedContent = `
       <!-- Artistic Background Canvas -->
       <div class="loading-canvas">
         <!-- Flowing Paint Streams -->
@@ -34,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <div class="paint-particle particle-6"></div>
       </div>
       
-      <!-- Central Loading Content -->
+      <!-- Enhanced Loading Content -->
       <div class="loading-content">
         <!-- Logo Container -->
         <div class="loading-logo">
@@ -78,49 +92,99 @@ document.addEventListener('DOMContentLoaded', function() {
         <div class="palette-circle palette-3"></div>
         <div class="palette-circle palette-4"></div>
       </div>
-    </div>
-  `;
-  
-  // Add to page
-  document.body.appendChild(loadingOverlay);
-  
-  // Simulate loading progress (much faster - 75% reduction)
-  let progress = 0;
-  const progressInterval = setInterval(() => {
-    progress += Math.random() * 25 + 15; // 15-40% increments (much faster)
-    if (progress >= 100) {
-      progress = 100;
-      clearInterval(progressInterval);
-      
-      // Complete loading after a brief pause
-      setTimeout(() => {
-        completeLoading();
-      }, 300); // Much shorter pause
-    }
+    `;
     
-    // Update progress
-    const flowFill = document.querySelector('.flow-fill');
-    if (flowFill) {
-      flowFill.style.width = progress + '%';
-    }
-  }, 150); // Much faster intervals
-  
-  // Function to complete loading and hide overlay
-  function completeLoading() {
-    console.log('🎨 Loading complete - revealing site');
-    loadingOverlay.classList.add('loading-complete');
+    // Transform instant overlay to enhanced overlay
+    instantOverlay.id = 'premium-loading-overlay';
+    instantOverlay.className = 'premium-loading-container';
+    instantOverlay.innerHTML = enhancedContent;
     
-    setTimeout(() => {
-      loadingOverlay.remove();
-      document.body.classList.add('site-loaded');
-    }, 1200);
+    // Start progress simulation
+    simulateProgress();
   }
   
-  // Fallback - ensure loading doesn't hang (reduced time)
+  function simulateProgress() {
+    let progress = 0;
+    const progressInterval = setInterval(() => {
+      progress += Math.random() * 25 + 15; // Fast progress
+      
+      if (progress >= 100) {
+        progress = 100;
+        clearInterval(progressInterval);
+        
+        // Complete loading
+        setTimeout(() => {
+          completeLoading();
+        }, 300);
+      }
+      
+      // Update progress bar
+      const flowFill = document.querySelector('.flow-fill');
+      if (flowFill) {
+        flowFill.style.width = progress + '%';
+      }
+    }, 150);
+  }
+  
+  function completeLoading() {
+    console.log('🎨 Loading complete - revealing site');
+    const overlay = document.getElementById('premium-loading-overlay');
+    
+    if (overlay) {
+      // Add completion animation
+      overlay.classList.add('loading-complete');
+      
+      // Restore body scroll and remove overlay
+      setTimeout(() => {
+        document.body.style.overflow = '';
+        overlay.remove();
+        document.body.classList.add('site-loaded');
+        
+        // Trigger any other initialization
+        initializeSite();
+      }, 1200);
+    }
+  }
+  
+  function initializeSite() {
+    // Site is now fully loaded and visible
+    console.log('🎨 Site initialization complete');
+    
+    // Initialize other components if needed
+    // Video player, logo fade, etc. should work normally now
+  }
+  
+  // Fallback safety - ensure loading never hangs
   setTimeout(() => {
-    if (document.getElementById('premium-loading-overlay')) {
+    const overlay = document.getElementById('premium-loading-overlay') || 
+                   document.getElementById('instant-loading-overlay');
+    if (overlay) {
       console.log('🎨 Fallback loading completion');
       completeLoading();
     }
-  }, 4000); // 4 seconds max (75% reduction)
+  }, 4000);
+  
+  // Handle page visibility changes
+  document.addEventListener('visibilitychange', function() {
+    if (document.hidden) {
+      // Page hidden - pause animations if needed
+    } else {
+      // Page visible - resume if needed
+    }
+  });
 });
+
+// Immediate execution for fastest possible display
+(function() {
+  // Ensure body overflow is hidden from the start
+  document.documentElement.style.overflow = 'hidden';
+  
+  // Add early class for styling
+  if (document.body) {
+    document.body.classList.add('loading-active');
+  } else {
+    document.addEventListener('DOMContentLoaded', () => {
+      document.body.classList.add('loading-active');
+    });
+  }
+})();
