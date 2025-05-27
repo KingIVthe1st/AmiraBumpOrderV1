@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading Animation Preview - Amira Rahim Fine Art</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/loading-animation.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        
+        .demo-controls {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 20000;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .demo-button {
+            background: linear-gradient(90deg, #ec4899, #eab308, #2563eb);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            margin: 5px;
+            transition: transform 0.2s;
+        }
+        
+        .demo-button:hover {
+            transform: scale(1.05);
+        }
+        
+        .site-preview {
+            padding: 50px 20px;
+            text-align: center;
+            background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+            min-height: 100vh;
+        }
+        
+        .preview-title {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, #ec4899, #eab308, #2563eb);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 2rem;
+        }
+        
+        .preview-text {
+            font-size: 1.2rem;
+            color: #64748b;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            line-height: 1.6;
+        }
+        
+        .amira-logo {
+            max-width: 300px;
+            margin: 2rem auto;
+            filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1));
+        }
+    </style>
+</head>
+<body>
+    <!-- Demo Controls -->
+    <div class="demo-controls">
+        <button class="demo-button" onclick="showLoadingAnimation()">▶️ Show Loading Animation</button>
+        <button class="demo-button" onclick="hideLoadingAnimation()">⏹️ Hide Animation</button>
+    </div>
+
+    <!-- Site Preview (what shows after loading) -->
+    <div class="site-preview">
+        <img src="images/AR_FineArt_Primary_Logo_2_3.webp" alt="Amira Rahim Fine Art" class="amira-logo">
+        <h1 class="preview-title">Amira Rahim Loading Animation</h1>
+        <p class="preview-text">
+            This is a preview of the sophisticated loading animation for the AmiraBumpOrderV1 project. 
+            The animation features flowing paint streams, color blooms, a custom paint brush loader, 
+            and a premium glassmorphism design that matches the site's artistic aesthetic.
+        </p>
+        <p class="preview-text">
+            Click "Show Loading Animation" above to see the full effect with all artistic elements, 
+            animations, and the Amira Rahim Fine Art branding.
+        </p>
+    </div>
+
+    <script>
+        function showLoadingAnimation() {
+            // Remove any existing overlay
+            const existing = document.getElementById('premium-loading-overlay');
+            if (existing) existing.remove();
+            
+            // Create the loading overlay
+            const loadingOverlay = document.createElement('div');
+            loadingOverlay.id = 'premium-loading-overlay';
+            loadingOverlay.innerHTML = `
+                <div class="premium-loading-container">
+                    <div class="loading-canvas">
+                        <div class="paint-stream paint-stream-1"></div>
+                        <div class="paint-stream paint-stream-2"></div>
+                        <div class="paint-stream paint-stream-3"></div>
+                        <div class="paint-stream paint-stream-4"></div>
+                        
+                        <div class="color-bloom bloom-1"></div>
+                        <div class="color-bloom bloom-2"></div>
+                        <div class="color-bloom bloom-3"></div>
+                        
+                        <div class="paint-particle particle-1"></div>
+                        <div class="paint-particle particle-2"></div>
+                        <div class="paint-particle particle-3"></div>
+                        <div class="paint-particle particle-4"></div>
+                        <div class="paint-particle particle-5"></div>
+                        <div class="paint-particle particle-6"></div>
+                    </div>
+                    
+                    <div class="loading-content">
+                        <div class="loading-logo">
+                            <img src="images/AR_FineArt_Primary_Logo_2_3.webp" alt="Amira Rahim Fine Art" class="logo-image">
+                        </div>
+                        
+                        <div class="loading-text">
+                            <h1 class="loading-brand">Amira Rahim</h1>
+                            <h3 class="loading-subtitle">Fine Art</h3>
+                        </div>
+                        
+                        <div class="paint-brush-loader">
+                            <div class="brush-handle"></div>
+                            <div class="brush-ferrule"></div>
+                            <div class="brush-bristles">
+                                <div class="bristle bristle-1"></div>
+                                <div class="bristle bristle-2"></div>
+                                <div class="bristle bristle-3"></div>
+                                <div class="bristle bristle-4"></div>
+                                <div class="bristle bristle-5"></div>
+                            </div>
+                            <div class="paint-drop"></div>
+                        </div>
+                        
+                        <div class="color-flow-progress">
+                            <div class="flow-track">
+                                <div class="flow-fill"></div>
+                                <div class="flow-shimmer"></div>
+                            </div>
+                            <div class="progress-text">Loading your artistic journey...</div>
+                        </div>
+                    </div>
+                    
+                    <div class="loading-decorations">
+                        <div class="palette-circle palette-1"></div>
+                        <div class="palette-circle palette-2"></div>
+                        <div class="palette-circle palette-3"></div>
+                        <div class="palette-circle palette-4"></div>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(loadingOverlay);
+            
+            // Simulate loading progress (faster)
+            let progress = 0;
+            const progressInterval = setInterval(() => {
+                progress += Math.random() * 25 + 15;
+                if (progress >= 100) {
+                    progress = 100;
+                    clearInterval(progressInterval);
+                }
+                
+                const flowFill = document.querySelector('.flow-fill');
+                if (flowFill) {
+                    flowFill.style.width = progress + '%';
+                }
+            }, 150);
+        }
+        
+        function hideLoadingAnimation() {
+            const overlay = document.getElementById('premium-loading-overlay');
+            if (overlay) {
+                overlay.classList.add('loading-complete');
+                setTimeout(() => {
+                    overlay.remove();
+                }, 1200);
+            }
+        }
+        
+        // Auto-show on page load for demo
+        window.addEventListener('load', () => {
+            setTimeout(showLoadingAnimation, 500);
+        });
+    </script>
+</body>
+</html>

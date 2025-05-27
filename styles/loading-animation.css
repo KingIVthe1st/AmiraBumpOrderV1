@@ -1,0 +1,529 @@
+/**
+ * Premium Loading Animation Styles
+ * Sophisticated Color Bridges™ themed loading experience
+ */
+
+/* Main Loading Overlay */
+#premium-loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, 
+    rgba(248, 250, 252, 0.98) 0%,
+    rgba(241, 245, 249, 0.96) 25%,
+    rgba(236, 254, 255, 0.94) 50%,
+    rgba(253, 242, 248, 0.96) 75%,
+    rgba(240, 249, 255, 0.98) 100%
+  );
+  backdrop-filter: blur(20px) saturate(180%);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  transition: all 1.2s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+#premium-loading-overlay.loading-complete {
+  opacity: 0;
+  transform: scale(1.1);
+  backdrop-filter: blur(40px) saturate(200%);
+}
+
+/* Loading Container */
+.premium-loading-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Artistic Background Canvas */
+.loading-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Flowing Paint Streams */
+.paint-stream {
+  position: absolute;
+  height: 4px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(236, 72, 153, 0.6) 15%, 
+    rgba(59, 130, 246, 0.6) 35%, 
+    rgba(245, 158, 11, 0.6) 55%, 
+    rgba(168, 85, 247, 0.6) 75%, 
+    rgba(34, 197, 94, 0.6) 90%,
+    transparent 100%
+  );
+  border-radius: 2px;
+  filter: blur(1px);
+  animation: paintStreamFlow 8s linear infinite;
+}
+
+.paint-stream-1 {
+  top: 20%;
+  width: 120%;
+  left: -60%;
+  animation-delay: 0s;
+  transform: rotate(2deg);
+}
+
+.paint-stream-2 {
+  top: 45%;
+  width: 130%;
+  left: -65%;
+  animation-delay: -2s;
+  transform: rotate(-1deg);
+}
+
+.paint-stream-3 {
+  top: 70%;
+  width: 110%;
+  left: -55%;
+  animation-delay: -4s;
+  transform: rotate(1.5deg);
+}
+
+.paint-stream-4 {
+  top: 85%;
+  width: 140%;
+  left: -70%;
+  animation-delay: -6s;
+  transform: rotate(-0.5deg);
+}
+
+/* Color Bloom Effects */
+.color-bloom {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(40px);
+  animation: colorBloom 6s ease-in-out infinite;
+  mix-blend-mode: multiply;
+  opacity: 0.3;
+}
+
+.bloom-1 {
+  width: 300px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(236, 72, 153, 0.4) 0%, transparent 70%);
+  top: 15%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.bloom-2 {
+  width: 250px;
+  height: 180px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.4) 0%, transparent 70%);
+  top: 60%;
+  right: 15%;
+  animation-delay: -2s;
+}
+
+.bloom-3 {
+  width: 200px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.4) 0%, transparent 70%);
+  bottom: 20%;
+  left: 50%;
+  animation-delay: -4s;
+}
+
+/* Floating Paint Particles */
+.paint-particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  animation: particleFloat 4s ease-in-out infinite;
+}
+
+.particle-1 { 
+  background: radial-gradient(circle, rgba(236, 72, 153, 0.8), transparent);
+  top: 25%; left: 20%; animation-delay: 0s; 
+}
+.particle-2 { 
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.8), transparent);
+  top: 40%; left: 80%; animation-delay: -1s; 
+}
+.particle-3 { 
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.8), transparent);
+  top: 65%; left: 25%; animation-delay: -2s; 
+}
+.particle-4 { 
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.8), transparent);
+  top: 30%; left: 60%; animation-delay: -3s; 
+}
+.particle-5 { 
+  background: radial-gradient(circle, rgba(34, 197, 94, 0.8), transparent);
+  top: 75%; left: 70%; animation-delay: -0.5s; 
+}
+.particle-6 { 
+  background: radial-gradient(circle, rgba(236, 72, 153, 0.6), transparent);
+  top: 50%; left: 45%; animation-delay: -1.5s; 
+}
+
+/* Central Loading Content */
+.loading-content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  max-width: 500px;
+  padding: 3rem 2rem;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(30px) saturate(180%);
+  border-radius: 2rem;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.1),
+    0 10px 20px rgba(0, 0, 0, 0.05),
+    inset 0 2px 0 rgba(255, 255, 255, 0.5);
+}
+
+/* Loading Logo */
+.loading-logo {
+  margin-bottom: 2rem;
+  animation: logoGlow 3s ease-in-out infinite;
+}
+
+.logo-image {
+  max-width: 200px;
+  height: auto;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1));
+}
+
+/* Loading Text */
+.loading-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #64748b;
+  margin: 0 0 0.5rem 0;
+  animation: textShimmer 2s ease-in-out infinite;
+}
+
+.loading-brand {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin: 0 0 0.5rem 0;
+  background: linear-gradient(90deg, 
+    #ec4899, #eab308, #2563eb, #7c3aed, #059669
+  );
+  background-size: 200% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: gradientFlow 3s linear infinite;
+}
+
+.loading-subtitle {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #64748b;
+  margin: 0 0 2rem 0;
+  animation: textShimmer 2s ease-in-out infinite;
+  animation-delay: 0.5s;
+}
+
+/* Paint Brush Loader */
+.paint-brush-loader {
+  position: relative;
+  width: 80px;
+  height: 120px;
+  margin: 0 auto 2rem;
+  animation: brushDance 3s ease-in-out infinite;
+}
+
+.brush-handle {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 60px;
+  background: linear-gradient(180deg, #8b4513 0%, #654321 100%);
+  border-radius: 4px;
+}
+
+.brush-ferrule {
+  position: absolute;
+  bottom: 55px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 20px;
+  background: linear-gradient(180deg, #c0c0c0 0%, #808080 100%);
+  border-radius: 2px;
+}
+
+.brush-bristles {
+  position: absolute;
+  bottom: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 40px;
+}
+
+.bristle {
+  position: absolute;
+  width: 2px;
+  background: linear-gradient(180deg, #2c2c2c 0%, #000000 100%);
+  border-radius: 1px;
+  animation: bristleWave 2s ease-in-out infinite;
+}
+
+.bristle-1 { left: 2px; height: 35px; animation-delay: 0s; }
+.bristle-2 { left: 5px; height: 40px; animation-delay: 0.2s; }
+.bristle-3 { left: 8px; height: 38px; animation-delay: 0.4s; }
+.bristle-4 { left: 11px; height: 36px; animation-delay: 0.6s; }
+.bristle-5 { left: 14px; height: 34px; animation-delay: 0.8s; }
+
+.paint-drop {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 8px;
+  background: radial-gradient(circle, #ec4899 0%, #7c3aed 100%);
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  animation: paintDrop 2s ease-in-out infinite;
+}
+
+/* Color Flow Progress Bar */
+.color-flow-progress {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.flow-track {
+  position: relative;
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.flow-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, 
+    #ec4899 0%, #eab308 25%, #2563eb 50%, #7c3aed 75%, #059669 100%
+  );
+  border-radius: 4px;
+  transition: width 0.3s ease-out;
+  animation: flowPulse 1.5s ease-in-out infinite;
+}
+
+.flow-shimmer {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(255, 255, 255, 0.6) 50%, 
+    transparent 100%
+  );
+  animation: shimmerSlide 2s linear infinite;
+}
+
+.progress-text {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #64748b;
+  margin-top: 1rem;
+  animation: textPulse 2s ease-in-out infinite;
+}
+
+/* Decorative Palette Circles */
+.loading-decorations {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.palette-circle {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  animation: paletteFloat 5s ease-in-out infinite;
+}
+
+.palette-1 {
+  background: radial-gradient(circle, #ec4899, #be185d);
+  top: 15%;
+  left: 15%;
+  animation-delay: 0s;
+}
+
+.palette-2 {
+  background: radial-gradient(circle, #2563eb, #1d4ed8);
+  top: 25%;
+  right: 20%;
+  animation-delay: -1.5s;
+}
+
+.palette-3 {
+  background: radial-gradient(circle, #eab308, #d97706);
+  bottom: 30%;
+  left: 25%;
+  animation-delay: -3s;
+}
+
+.palette-4 {
+  background: radial-gradient(circle, #7c3aed, #5b21b6);
+  bottom: 20%;
+  right: 30%;
+  animation-delay: -4.5s;
+}
+
+/* Animations */
+@keyframes paintStreamFlow {
+  0% { transform: translateX(-150%) rotate(2deg); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateX(150%) rotate(2deg); opacity: 0; }
+}
+
+@keyframes colorBloom {
+  0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.3; }
+  50% { transform: scale(1.2) rotate(5deg); opacity: 0.5; }
+}
+
+@keyframes particleFloat {
+  0%, 100% { transform: translateY(0) scale(1); opacity: 0.8; }
+  25% { transform: translateY(-20px) scale(1.2); opacity: 1; }
+  75% { transform: translateY(-10px) scale(0.9); opacity: 0.9; }
+}
+
+@keyframes logoGlow {
+  0%, 100% { transform: scale(1); filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1)); }
+  50% { transform: scale(1.02); filter: drop-shadow(0 6px 16px rgba(236, 72, 153, 0.2)); }
+}
+
+@keyframes textShimmer {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+@keyframes brushDance {
+  0%, 100% { transform: rotate(0deg) translateY(0); }
+  25% { transform: rotate(-3deg) translateY(-2px); }
+  75% { transform: rotate(3deg) translateY(-4px); }
+}
+
+@keyframes bristleWave {
+  0%, 100% { transform: scaleY(1) rotate(0deg); }
+  50% { transform: scaleY(1.1) rotate(2deg); }
+}
+
+@keyframes paintDrop {
+  0%, 100% { transform: translateX(-50%) scale(1); opacity: 1; }
+  50% { transform: translateX(-50%) scale(1.2); opacity: 0.8; }
+  75% { transform: translateX(-50%) translateY(5px) scale(0.8); opacity: 0.6; }
+}
+
+@keyframes flowPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes shimmerSlide {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+@keyframes textPulse {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
+}
+
+@keyframes paletteFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  33% { transform: translateY(-10px) rotate(120deg); }
+  66% { transform: translateY(-5px) rotate(240deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .loading-content {
+    max-width: 90%;
+    padding: 2rem 1.5rem;
+  }
+  
+  .loading-brand {
+    font-size: 2rem;
+  }
+  
+  .loading-title {
+    font-size: 1.2rem;
+  }
+  
+  .loading-subtitle {
+    font-size: 1rem;
+  }
+  
+  .logo-image {
+    max-width: 150px;
+  }
+  
+  .paint-brush-loader {
+    width: 60px;
+    height: 90px;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  #premium-loading-overlay,
+  .loading-content,
+  .logo-image,
+  .loading-brand,
+  .paint-brush-loader,
+  .flow-fill {
+    animation: none !important;
+  }
+  
+  .paint-stream,
+  .color-bloom,
+  .paint-particle,
+  .palette-circle {
+    animation: none !important;
+    opacity: 0.3 !important;
+  }
+}
