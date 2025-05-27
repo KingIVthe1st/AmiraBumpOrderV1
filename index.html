@@ -10,6 +10,15 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/testimonials.css">
+    <style>
+        /* CSS-based anchor fix for immediate scroll on page load */
+        html { scroll-behavior: smooth; }
+        #masterabstract { scroll-margin-top: 2rem; }
+        
+        /* Ensure video container doesn't block anchoring */
+        #vimeo-player { position: relative; z-index: 1; }
+    </style>
+    <script src="anchor-fix.js"></script>
 </head>
 <body class="font-jakarta bg-gradient-to-br from-pink-100 via-yellow-100 to-blue-100 text-gray-800 min-h-screen flex flex-col">
   <!-- HERO SECTION - Completely Redesigned -->
@@ -308,6 +317,5 @@
       document.getElementById('vimeo-player').appendChild(iframe);
     </script>
     <script src="scripts/main.js"></script>
-    <script src="anchor-fix.js"></script>
 </body>
 </html>
