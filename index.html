@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Master Abstract Painting with Amira Rahim</title>
     <!-- Force deploy anchor fix -->
-    <meta name="description" content="Unlock your creativity with Amira Rahim’s free abstract painting tutorial and get exclusive access to her mini course!">
+    <meta name="description" content="Unlock your creativity with Amira Rahim's free abstract painting tutorial and get exclusive access to her mini course!">
     <link rel="icon" type="image/png" href="/images/logo-amira-rahim.png">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
@@ -28,24 +28,452 @@
             white-space: nowrap;
         }
         
-        /* Force button to be above everything */
-        .floating-badge::before {
+        /* ULTRA-PREMIUM ARTISTIC HEADER - Next Level Design */
+        .artistic-masterpiece-header {
+            background: linear-gradient(145deg, 
+                rgba(248, 250, 252, 1) 0%,
+                rgba(241, 245, 249, 0.98) 20%,
+                rgba(236, 254, 255, 0.95) 40%,
+                rgba(253, 242, 248, 0.98) 70%,
+                rgba(240, 249, 255, 1) 100%
+            );
+            position: relative;
+            overflow: hidden;
+            min-height: 100vh;
+        }
+        
+        /* Living Abstract Paint Canvas */
+        .living-paint-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                /* Color bleeding effects matching site palette */
+                radial-gradient(ellipse 1200px 800px at 15% 10%, rgba(236, 72, 153, 0.12) 0%, rgba(219, 39, 119, 0.06) 30%, transparent 60%),
+                radial-gradient(ellipse 900px 1100px at 85% 15%, rgba(59, 130, 246, 0.10) 0%, rgba(37, 99, 235, 0.05) 35%, transparent 65%),
+                radial-gradient(ellipse 800px 600px at 10% 85%, rgba(245, 158, 11, 0.08) 0%, rgba(217, 119, 6, 0.04) 40%, transparent 70%),
+                radial-gradient(ellipse 1000px 700px at 75% 80%, rgba(168, 85, 247, 0.09) 0%, rgba(147, 51, 234, 0.04) 35%, transparent 65%),
+                radial-gradient(ellipse 600px 800px at 50% 50%, rgba(34, 197, 94, 0.06) 0%, rgba(22, 163, 74, 0.03) 40%, transparent 70%);
+            animation: paintCanvas 35s ease-in-out infinite;
+        }
+        
+        /* Dynamic Color Bloom Effects */
+        .color-bloom {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            animation: bloom 25s ease-in-out infinite;
+            mix-blend-mode: screen;
+        }
+        
+        .color-bloom:nth-child(1) {
+            width: 400px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(236, 72, 153, 0.2) 0%, rgba(219, 39, 119, 0.1) 40%, transparent 80%);
+            top: 20%;
+            left: 0%;
+            animation-delay: 0s;
+            transform: rotate(-20deg);
+        }
+        
+        .color-bloom:nth-child(2) {
+            width: 350px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(37, 99, 235, 0.08) 40%, transparent 80%);
+            top: 50%;
+            right: 5%;
+            animation-delay: -12s;
+            transform: rotate(30deg);
+        }
+        
+        .color-bloom:nth-child(3) {
+            width: 300px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(245, 158, 11, 0.12) 0%, rgba(217, 119, 6, 0.06) 40%, transparent 80%);
+            top: 30%;
+            left: 50%;
+            animation-delay: -8s;
+            transform: rotate(-15deg);
+        }
+        
+        .color-bloom:nth-child(4) {
+            width: 280px;
+            height: 320px;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.1) 0%, rgba(147, 51, 234, 0.05) 40%, transparent 80%);
+            top: 70%;
+            left: 20%;
+            animation-delay: -20s;
+            transform: rotate(45deg);
+        }
+        
+        /* Sophisticated Color Streams */
+        .color-stream {
+            position: absolute;
+            height: 3px;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(236, 72, 153, 0.4) 20%, 
+                rgba(59, 130, 246, 0.4) 40%, 
+                rgba(245, 158, 11, 0.4) 60%, 
+                rgba(168, 85, 247, 0.4) 80%, 
+                transparent 100%
+            );
+            filter: blur(2px);
+            animation: streamFlow 40s linear infinite;
+        }
+        
+        .color-stream:nth-child(1) {
+            top: 25%;
+            width: 120%;
+            left: -10%;
+            animation-delay: 0s;
+            transform: rotate(3deg);
+        }
+        
+        .color-stream:nth-child(2) {
+            top: 65%;
+            width: 130%;
+            left: -15%;
+            animation-delay: -20s;
+            transform: rotate(-2deg);
+        }
+        
+        .color-stream:nth-child(3) {
+            top: 45%;
+            width: 110%;
+            left: -5%;
+            animation-delay: -10s;
+            transform: rotate(1deg);
+        }
+        
+        /* Premium Atmospheric Lighting */
+        .atmospheric-light {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                /* Sophisticated multi-point lighting */
+                radial-gradient(ellipse 600px 400px at 20% 20%, rgba(255, 255, 255, 0.25) 0%, transparent 60%),
+                radial-gradient(ellipse 500px 350px at 80% 30%, rgba(255, 255, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse 400px 600px at 60% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 40%),
+                linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, transparent 40%),
+                linear-gradient(225deg, rgba(255, 255, 255, 0.2) 0%, transparent 30%);
+            mix-blend-mode: overlay;
+            animation: atmosphericShift 45s ease-in-out infinite;
+        }
+        
+        /* Dynamic Paint Particles */
+        .paint-particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            animation: particleDance 20s ease-in-out infinite;
+        }
+        
+        .paint-particle:nth-child(1) { 
+            background: radial-gradient(circle, rgba(236, 72, 153, 0.8), transparent);
+            top: 15%; left: 20%; animation-delay: 0s; 
+        }
+        .paint-particle:nth-child(2) { 
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.8), transparent);
+            top: 30%; left: 75%; animation-delay: -4s; 
+        }
+        .paint-particle:nth-child(3) { 
+            background: radial-gradient(circle, rgba(245, 158, 11, 0.8), transparent);
+            top: 60%; left: 30%; animation-delay: -8s; 
+        }
+        .paint-particle:nth-child(4) { 
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.8), transparent);
+            top: 80%; left: 65%; animation-delay: -12s; 
+        }
+        .paint-particle:nth-child(5) { 
+            background: radial-gradient(circle, rgba(34, 197, 94, 0.8), transparent);
+            top: 45%; left: 85%; animation-delay: -16s; 
+        }
+        .paint-particle:nth-child(6) { 
+            background: radial-gradient(circle, rgba(236, 72, 153, 0.6), transparent);
+            top: 25%; left: 50%; animation-delay: -2s; 
+        }
+        .paint-particle:nth-child(7) { 
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.6), transparent);
+            top: 70%; left: 15%; animation-delay: -6s; 
+        }
+        .paint-particle:nth-child(8) { 
+            background: radial-gradient(circle, rgba(245, 158, 11, 0.6), transparent);
+            top: 35%; left: 40%; animation-delay: -10s; 
+        }
+        
+        /* Artistic Brush Strokes */
+        .premium-brush-stroke {
+            position: absolute;
+            background: linear-gradient(60deg, 
+                rgba(236, 72, 153, 0.15), 
+                rgba(59, 130, 246, 0.12), 
+                rgba(245, 158, 11, 0.1),
+                rgba(168, 85, 247, 0.08)
+            );
+            filter: blur(25px);
+            border-radius: 60px;
+            animation: brushSweep 50s ease-in-out infinite;
+        }
+        
+        .premium-brush-stroke:nth-child(1) {
+            width: 500px;
+            height: 80px;
+            top: 30%;
+            left: -15%;
+            transform: rotate(-12deg);
+            animation-delay: 0s;
+        }
+        
+        .premium-brush-stroke:nth-child(2) {
+            width: 400px;
+            height: 60px;
+            top: 60%;
+            right: -10%;
+            transform: rotate(18deg);
+            animation-delay: -25s;
+        }
+        
+        .premium-brush-stroke:nth-child(3) {
+            width: 350px;
+            height: 70px;
+            top: 80%;
+            left: 20%;
+            transform: rotate(-8deg);
+            animation-delay: -15s;
+        }
+        
+        /* Ultra-Premium Video Container */
+        .masterpiece-video-container {
+            background: rgba(255, 255, 255, 0.35);
+            backdrop-filter: blur(40px) saturate(180%) brightness(110%);
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 
+                0 30px 60px rgba(0, 0, 0, 0.2),
+                0 15px 30px rgba(0, 0, 0, 0.15),
+                0 5px 15px rgba(0, 0, 0, 0.1),
+                inset 0 2px 0 rgba(255, 255, 255, 0.5),
+                inset 0 -2px 0 rgba(255, 255, 255, 0.3);
+            position: relative;
+        }
+        
+        .masterpiece-video-container::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
+            background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.3) 0%, 
+                transparent 40%, 
+                rgba(255, 255, 255, 0.1) 100%
+            );
+            border-radius: inherit;
+            pointer-events: none;
+        }
+        
+        .masterpiece-video-container::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, 
+                rgba(236, 72, 153, 0.3),
+                rgba(59, 130, 246, 0.3),
+                rgba(245, 158, 11, 0.3),
+                rgba(168, 85, 247, 0.3)
+            );
+            border-radius: inherit;
             z-index: -1;
+            filter: blur(8px);
+            animation: rainbowGlow 8s ease-in-out infinite;
+        }
+        
+        /* Masterpiece Floating Badge */
+        .masterpiece-badge {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(30px) saturate(180%);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 
+                0 20px 40px rgba(236, 72, 153, 0.3),
+                0 10px 20px rgba(0, 0, 0, 0.15),
+                0 5px 10px rgba(0, 0, 0, 0.1),
+                inset 0 2px 0 rgba(255, 255, 255, 0.8);
+            position: relative;
+        }
+        
+        .masterpiece-badge::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, 
+                rgba(236, 72, 153, 0.05) 0%, 
+                rgba(59, 130, 246, 0.03) 50%, 
+                rgba(245, 158, 11, 0.05) 100%
+            );
+            border-radius: inherit;
+            pointer-events: none;
+        }
+        
+        /* Enhanced Congratulations Text */
+        .masterpiece-congratulations {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(35px) saturate(170%);
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 
+                0 25px 50px rgba(236, 72, 153, 0.2),
+                0 12px 25px rgba(0, 0, 0, 0.12),
+                0 6px 12px rgba(0, 0, 0, 0.08),
+                inset 0 2px 0 rgba(255, 255, 255, 0.6);
+        }
+        
+        /* Advanced Keyframe Animations */
+        @keyframes paintCanvas {
+            0%, 100% { 
+                transform: translateX(0) translateY(0) scale(1); 
+                opacity: 1; 
+            }
+            25% { 
+                transform: translateX(-30px) translateY(-15px) scale(1.02); 
+                opacity: 0.95; 
+            }
+            50% { 
+                transform: translateX(20px) translateY(-25px) scale(0.98); 
+                opacity: 0.9; 
+            }
+            75% { 
+                transform: translateX(-10px) translateY(20px) scale(1.01); 
+                opacity: 0.93; 
+            }
+        }
+        
+        @keyframes bloom {
+            0%, 100% { 
+                transform: scale(1) rotate(0deg); 
+                opacity: 0.8; 
+                filter: blur(60px); 
+            }
+            33% { 
+                transform: scale(1.15) rotate(8deg); 
+                opacity: 1; 
+                filter: blur(50px); 
+            }
+            66% { 
+                transform: scale(0.9) rotate(-5deg); 
+                opacity: 0.9; 
+                filter: blur(70px); 
+            }
+        }
+        
+        @keyframes streamFlow {
+            0% { transform: translateX(-150%) rotate(3deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateX(150%) rotate(3deg); opacity: 0; }
+        }
+        
+        @keyframes atmosphericShift {
+            0%, 100% { 
+                opacity: 1; 
+                transform: translateX(0) translateY(0) scale(1); 
+            }
+            33% { 
+                opacity: 0.8; 
+                transform: translateX(20px) translateY(-10px) scale(1.05); 
+            }
+            66% { 
+                opacity: 0.9; 
+                transform: translateX(-15px) translateY(15px) scale(0.95); 
+            }
+        }
+        
+        @keyframes particleDance {
+            0%, 100% { 
+                transform: translateY(0) translateX(0) scale(1); 
+                opacity: 0.8; 
+            }
+            25% { 
+                transform: translateY(-30px) translateX(15px) scale(1.3); 
+                opacity: 1; 
+            }
+            50% { 
+                transform: translateY(-15px) translateX(-10px) scale(0.8); 
+                opacity: 0.9; 
+            }
+            75% { 
+                transform: translateY(-40px) translateX(20px) scale(1.2); 
+                opacity: 0.95; 
+            }
+        }
+        
+        @keyframes brushSweep {
+            0%, 100% { 
+                transform: translateX(0) rotate(-12deg) scale(1); 
+                opacity: 0.8; 
+            }
+            50% { 
+                transform: translateX(80px) rotate(-10deg) scale(1.1); 
+                opacity: 1; 
+            }
+        }
+        
+        @keyframes rainbowGlow {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
         }
     </style>
     <script src="anchor-fix.js"></script>
 </head>
 <body class="font-jakarta bg-gradient-to-br from-pink-100 via-yellow-100 to-blue-100 text-gray-800 min-h-screen flex flex-col">
-  <!-- HERO SECTION - Completely Redesigned -->
-  <header class="relative w-full overflow-hidden bg-gradient-to-br from-pink-50 to-indigo-50">
+  <!-- ULTRA-PREMIUM ARTISTIC HEADER - Million Dollar Agency Design -->
+  <header class="artistic-masterpiece-header">
+    
+    <!-- Living Abstract Paint Canvas -->
+    <div class="living-paint-canvas"></div>
+    
+    <!-- Dynamic Color Blooms -->
+    <div class="color-bloom"></div>
+    <div class="color-bloom"></div>
+    <div class="color-bloom"></div>
+    <div class="color-bloom"></div>
+    
+    <!-- Sophisticated Color Streams -->
+    <div class="color-stream"></div>
+    <div class="color-stream"></div>
+    <div class="color-stream"></div>
+    
+    <!-- Premium Atmospheric Lighting -->
+    <div class="atmospheric-light"></div>
+    
+    <!-- Dynamic Paint Particles -->
+    <div class="paint-particle"></div>
+    <div class="paint-particle"></div>
+    <div class="paint-particle"></div>
+    <div class="paint-particle"></div>
+    <div class="paint-particle"></div>
+    <div class="paint-particle"></div>
+    <div class="paint-particle"></div>
+    <div class="paint-particle"></div>
+    
+    <!-- Artistic Brush Strokes -->
+    <div class="premium-brush-stroke"></div>
+    <div class="premium-brush-stroke"></div>
+    <div class="premium-brush-stroke"></div>
+    
     <!-- Logo Bar -->
-    <div class="relative z-20 py-4 px-4 sm:px-6 lg:px-8 bg-white/80 backdrop-blur-md border-b border-pink-100">
+    <div class="relative z-20 py-4 px-4 sm:px-6 lg:px-8 bg-white/90 backdrop-blur-md border-b border-white/30">
       <div class="container mx-auto flex justify-center md:justify-start">
         <picture>
           <source srcset="images/AR_FineArt_Primary Logo 2 (3).webp" type="image/webp">
@@ -55,48 +483,28 @@
     </div>
 
     <!-- Main Hero Content -->
-    <div class="relative pt-8 pb-20 md:py-16 px-4 sm:px-6 lg:px-8 min-h-screen flex flex-col">
-      <!-- Decorative Background Elements -->
-      <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
-        <div class="hidden md:block absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-bl from-pink-200/30 to-transparent rounded-full blur-3xl transform translate-x-1/3 -translate-y-1/3"></div>
-        <div class="absolute bottom-0 left-0 w-[800px] h-[800px] bg-gradient-to-tr from-blue-200/30 to-transparent rounded-full blur-3xl transform -translate-x-1/3 translate-y-1/3 z-0"></div>
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full opacity-10">
-          <svg viewBox="0 0 100 100" class="w-full h-full">
-            <defs>
-              <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
-                <circle cx="5" cy="5" r="1" fill="#f472b6" opacity="0.3" />
-              </pattern>
-            </defs>
-            <rect width="100" height="100" fill="url(#grid)" />
-          </svg>
-        </div>
-      </div>
+    <div class="relative pt-8 pb-20 md:py-16 px-4 sm:px-6 lg:px-8 min-h-screen flex flex-col z-10">
 
       <!-- Top Section: Congratulations + Video (Full Width, Above Fold) -->
       <div class="flex-1 flex flex-col justify-center max-w-6xl mx-auto w-full relative z-10">
         <!-- Congratulations Text -->
         <div class="text-center mb-8 relative z-20">
-          <h3 class="text-2xl md:text-4xl font-black bg-gradient-to-r from-pink-600 via-yellow-500 to-blue-600 bg-clip-text text-transparent animate-pulse px-8 py-6 rounded-2xl bg-gray-200 shadow-2xl border-2 border-gray-300 mx-4" style="font-weight: 900; text-shadow: 0 0 10px rgba(0,0,0,0.5);">
+          <h3 class="masterpiece-congratulations text-2xl md:text-4xl font-black bg-gradient-to-r from-pink-600 via-yellow-500 to-blue-600 bg-clip-text text-transparent px-8 py-6 rounded-2xl shadow-2xl mx-4" style="font-weight: 900;">
             🎉 Congratulations! Here is your free tutorial
           </h3>
         </div>
         
-        <!-- Video Section (Full Width) -->
+        <!-- Ultra-Premium Video Section -->
         <div class="w-full relative z-10 max-w-4xl mx-auto">
-          <div class="relative w-full" style="aspect-ratio: 16/9;">
-            <!-- Artistic Frame -->
-            <div class="absolute -inset-4 md:-inset-6 lg:-inset-8 xl:-inset-10 bg-gradient-to-r from-pink-400 via-yellow-300 to-blue-400 rounded-3xl opacity-70 blur-lg transition-all duration-500 group-hover:opacity-90 z-0"></div>
+          <div class="masterpiece-video-container relative w-full rounded-3xl p-3" style="aspect-ratio: 16/9;">
             
             <!-- Video Container -->
             <div class="relative w-full h-full rounded-2xl overflow-hidden group z-10">
-              <div id="vimeo-player" class="w-full h-full"></div>
+              <div id="vimeo-player" class="w-full h-full rounded-2xl"></div>
             </div>
             
-            <!-- Decorative Elements -->
-            <div class="absolute -top-6 -right-6 w-24 h-24 bg-pink-400/30 rounded-full blur-xl z-5"></div>
-            
-            <!-- Floating Badge -->
-            <div class="floating-badge absolute -bottom-8 right-10 bg-white rounded-full shadow-xl px-4 py-2 flex items-center z-50">
+            <!-- Masterpiece Floating Badge -->
+            <div class="floating-badge masterpiece-badge absolute -bottom-8 right-10 rounded-full px-4 py-2 flex items-center z-50">
               <span class="bg-gradient-to-r from-pink-500 to-blue-500 bg-clip-text text-transparent font-bold text-sm">Free Tutorial</span>
             </div>
           </div>
@@ -283,12 +691,12 @@
             <p class="text-gray-600">Nope! The tutorial and mini course are designed for all levels, from total beginners to seasoned artists.</p>
           </div>
           <div>
-            <p class="font-semibold">What’s the refund policy?</p>
-            <p class="text-gray-600">Try the mini course risk-free for 30 days. If you’re not satisfied, get a full refund—no questions asked.</p>
+            <p class="font-semibold">What's the refund policy?</p>
+            <p class="text-gray-600">Try the mini course risk-free for 30 days. If you're not satisfied, get a full refund—no questions asked.</p>
           </div>
           <div>
             <p class="font-semibold">How do I access the course?</p>
-            <p class="text-gray-600">After enrolling, you’ll get instant access to all lessons and resources in your private member area.</p>
+            <p class="text-gray-600">After enrolling, you'll get instant access to all lessons and resources in your private member area.</p>
           </div>
         </div>
       </div>
@@ -316,27 +724,21 @@
       <div class="text-xs opacity-60">&copy; 2025 Amira Rahim. All rights reserved.</div>
     </div>
   </footer>
-</body>
 
-    <footer class="footer">
-        <div class="container">
-                    </div>
-    </footer>
-
-    <!-- Vimeo Player API -->
-    <script src="https://player.vimeo.com/api/player.js"></script>
-      <script>
-      // Initialize Vimeo player with native controls and enhanced autoplay
-      const iframe = document.createElement('iframe');
-      iframe.src = 'https://player.vimeo.com/video/1071146708?autoplay=1&loop=1&muted=1&controls=1&autopause=0&playsinline=1&background=0&quality=auto';
-      iframe.allow = 'autoplay; fullscreen; picture-in-picture';
-      iframe.setAttribute('playsinline', '');
-      iframe.setAttribute('webkit-playsinline', '');
-      iframe.setAttribute('muted', 'true');
-      iframe.setAttribute('loading', 'eager');
-      iframe.className = 'w-full h-full';
-      document.getElementById('vimeo-player').appendChild(iframe);
-    </script>
-    <script src="scripts/main.js"></script>
+  <!-- Vimeo Player API -->
+  <script src="https://player.vimeo.com/api/player.js"></script>
+  <script>
+    // Initialize Vimeo player with native controls and enhanced autoplay
+    const iframe = document.createElement('iframe');
+    iframe.src = 'https://player.vimeo.com/video/1071146708?autoplay=1&loop=1&muted=1&controls=1&autopause=0&playsinline=1&background=0&quality=auto';
+    iframe.allow = 'autoplay; fullscreen; picture-in-picture';
+    iframe.setAttribute('playsinline', '');
+    iframe.setAttribute('webkit-playsinline', '');
+    iframe.setAttribute('muted', 'true');
+    iframe.setAttribute('loading', 'eager');
+    iframe.className = 'w-full h-full';
+    document.getElementById('vimeo-player').appendChild(iframe);
+  </script>
+  <script src="scripts/main.js"></script>
 </body>
 </html>
