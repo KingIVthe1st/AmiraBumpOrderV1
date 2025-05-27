@@ -17,15 +17,25 @@ function completeLoading() {
     // Remove after animation
     setTimeout(() => {
       overlay.remove();
-      document.body.style.overflow = '';
-      document.documentElement.style.overflow = '';
-      console.log('✅ Loading complete - site visible');
+      // Force restore scrolling
+      document.body.style.overflow = 'visible';
+      document.body.style.overflowY = 'auto';
+      document.documentElement.style.overflow = 'visible';
+      document.documentElement.style.overflowY = 'auto';
+      
+      // Remove any loading classes that might affect scroll
+      document.body.classList.remove('loading-active');
+      document.body.classList.add('site-loaded');
+      
+      console.log('✅ Loading complete - scrolling restored');
     }, 600);
   }
   
-  // Always restore scroll as backup
-  document.body.style.overflow = '';
-  document.documentElement.style.overflow = '';
+  // Always restore scroll as backup - FORCE IT
+  document.body.style.overflow = 'visible';
+  document.body.style.overflowY = 'auto';
+  document.documentElement.style.overflow = 'visible';  
+  document.documentElement.style.overflowY = 'auto';
 }
 
 // Wait for DOM, then complete loading after 2 seconds
@@ -50,6 +60,12 @@ setTimeout(() => {
   console.log('🚨 Emergency fallback at 6 seconds');
   const overlay = document.getElementById('instant-loading-overlay');
   if (overlay) overlay.remove();
-  document.body.style.overflow = '';
-  document.documentElement.style.overflow = '';
+  
+  // FORCE restore scrolling
+  document.body.style.overflow = 'visible';
+  document.body.style.overflowY = 'auto';
+  document.documentElement.style.overflow = 'visible';
+  document.documentElement.style.overflowY = 'auto';
+  
+  console.log('🔧 Emergency scroll restoration complete');
 }, 6000);
