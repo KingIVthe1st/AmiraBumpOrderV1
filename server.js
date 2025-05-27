@@ -41,6 +41,14 @@ app.use(express.static(__dirname, {
   }
 }));
 
+// Serve simple.html for testing
+app.get('/test', (req, res) => {
+  res.sendFile(path.join(__dirname, 'simple.html'));
+});
+
+// Default route now serves index.html again
+// Test route still available at /test
+
 // Health check endpoint (Docker-like)
 app.get('/health', (req, res) => {
   res.json({

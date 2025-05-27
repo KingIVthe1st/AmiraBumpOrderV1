@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amira Rahim - Simple Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f8f0ff;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .logo {
+            max-width: 200px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            color: #d946ef;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="images/AR_FineArt_Primary_Logo_2_3.webp" alt="Amira Rahim Fine Art" class="logo">
+        <h1>Simple Test Page</h1>
+        <p>If you can see this page, the basic HTML and CSS are working correctly.</p>
+        <p>The main site might have a JavaScript error or CSS loading issue.</p>
+        
+        <div id="logo-test">
+            <h2>Logo Fade Test</h2>
+            <p>Scroll down to see if the logo fades...</p>
+            <div style="height: 1000px; background: linear-gradient(to bottom, #f0f0f0, #ffffff);">
+                Scroll space
+            </div>
+        </div>
+    </div>
+
+    <script>
+        console.log('Simple test page loaded');
+        
+        // Simple logo fade effect
+        window.addEventListener('DOMContentLoaded', function() {
+            const logo = document.querySelector('.logo');
+            if (!logo) return;
+            
+            // Set initial styles
+            logo.style.transition = 'opacity 0.4s ease-out';
+            
+            // Scroll handler
+            window.addEventListener('scroll', function() {
+                const scrollY = window.scrollY;
+                const opacity = Math.max(0.6, 1 - (scrollY / 300));
+                logo.style.opacity = opacity;
+            }, { passive: true });
+        });
+    </script>
+</body>
+</html>
