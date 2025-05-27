@@ -1,6 +1,6 @@
 /**
- * Optimized Anchor Fix for AmiraBumpOrderV1
- * Combines functionality from anchor-fix.js and immediate-anchor-fix.js
+ * Optimized JavaScript for AmiraBumpOrderV1
+ * Includes anchor fix and scroll effects
  */
 (function() {
     'use strict';
@@ -95,6 +95,53 @@
         debug('Initialized');
     }
 
+    // Logo fade effect on scroll
+    function initLogoFadeEffect() {
+        const logo = document.querySelector('.site-logo img');
+        if (!logo) return;
+        
+        // Initial state
+        logo.style.transition = 'opacity 0.4s ease-out, transform 0.4s ease-out';
+        
+        // Scroll handler
+        function handleScroll() {
+            const scrollPosition = window.scrollY;
+            const fadeStart = 100; // Start fading at this scroll position
+            const fadeEnd = 300;   // Fully faded at this scroll position
+            
+            if (scrollPosition <= fadeStart) {
+                // Fully visible
+                logo.style.opacity = '1';
+                logo.style.transform = 'scale(1)';
+            } else if (scrollPosition >= fadeEnd) {
+                // Fully faded
+                logo.style.opacity = '0.6';
+                logo.style.transform = 'scale(0.9)';
+            } else {
+                // Partial fade
+                const fadePercent = (scrollPosition - fadeStart) / (fadeEnd - fadeStart);
+                const opacity = 1 - (fadePercent * 0.4); // Only fade to 0.6 opacity
+                const scale = 1 - (fadePercent * 0.1);   // Only scale down to 0.9
+                
+                logo.style.opacity = opacity.toString();
+                logo.style.transform = `scale(${scale})`;
+            }
+        }
+        
+        // Add scroll listener
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        
+        // Initial call to set correct state
+        handleScroll();
+    }
+    
     // Start the script
     init();
+    
+    // Initialize logo fade effect after DOM is loaded
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initLogoFadeEffect);
+    } else {
+        initLogoFadeEffect();
+    }
 })();
